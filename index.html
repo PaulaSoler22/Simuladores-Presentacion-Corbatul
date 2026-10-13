@@ -383,7 +383,7 @@
         .cm-card { background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid #eee; overflow:hidden; display:flex; flex-direction:column; transition: box-shadow .3s, transform .3s; }
         .cm-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
         .cm-card .cm-img { padding:14px 14px 0; }
-        .cm-card .cm-img img { width:100%; border-radius:8px; border:1px solid #e6e6e6; cursor:zoom-in; display:block; transition: transform .3s ease; }
+        .cm-card .cm-img img { width:100%; height:190px; object-fit:cover; object-position:top; border-radius:8px; border:1px solid #e6e6e6; cursor:zoom-in; display:block; transition: transform .3s ease; }
         .cm-card .cm-img img:hover { transform: scale(1.01); }
         .cm-card .cm-body { padding:16px 22px 22px; display:flex; flex-direction:column; flex:1; }
         .cm-titlerow { display:flex; align-items:center; gap:10px; }
@@ -396,13 +396,19 @@
         @media (max-width: 768px) { .cm-grid { grid-template-columns: 1fr; } }
 
         /* ===== DECISIONES (bloques numerados) ===== */
-        .dec-block { border-radius:16px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,0.1); margin-bottom:26px; border:1px solid #eee; }
-        .dec-head { display:flex; align-items:center; gap:18px; padding:20px 28px; background:linear-gradient(135deg, var(--primary), var(--amber)); color:#fff; }
-        .dec-num { flex-shrink:0; width:46px; height:46px; border-radius:12px; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.4em; }
-        .dec-head h3 { font-family:'Montserrat',sans-serif; font-size:1.3em; margin-bottom:3px; }
-        .dec-head p { font-size:0.92em; opacity:0.95; line-height:1.45; }
-        .dec-shot { padding:22px 26px 26px; background:#f7f9fb; text-align:center; }
-        .dec-shot img { width:100%; max-width:920px; border-radius:10px; border:1px solid #e0e6ea; box-shadow:0 4px 16px rgba(0,0,0,0.1); cursor:zoom-in; transition:transform .3s ease; }
+        .dec-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin:26px 0; }
+        @media (max-width: 1024px) { .dec-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .dec-grid { grid-template-columns: 1fr; } }
+        .dec-block { border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid #eee; background:#fff; display:flex; flex-direction:column; transition: box-shadow .3s, transform .3s; }
+        .dec-block:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+        .dec-head { display:flex; align-items:center; gap:14px; padding:14px 18px; background:linear-gradient(135deg, var(--primary), var(--amber)); color:#fff; min-height:96px; }
+        .dec-num { flex-shrink:0; width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.15em; }
+        .dec-head h3 { font-family:'Montserrat',sans-serif; font-size:1.05em; margin-bottom:3px; }
+        .dec-head p { font-size:0.82em; opacity:0.95; line-height:1.4; }
+        .dec-shot { padding:14px; background:#f7f9fb; }
+        .dec-body { padding:14px 18px 20px; display:flex; flex-direction:column; flex:1; }
+        .dec-body .cm-why-text { font-size:0.85em; }
+        .dec-shot img { width:100%; height:190px; object-fit:cover; object-position:top; display:block; border-radius:8px; border:1px solid #e0e6ea; cursor:zoom-in; transition:transform .3s ease; }
         .dec-shot img:hover { transform:scale(1.01); }
 
         /* ===== GALLERY + LIGHTBOX ===== */
@@ -495,6 +501,10 @@
         .sdn-img { width:300px; max-width:80%; height:auto; display:block; margin:0 auto; }
         .contact-line .wa-icon { width:22px; height:22px; fill:#fff; flex-shrink:0; }
         .brand-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); backdrop-filter:blur(8px); padding:11px 24px; border-radius:30px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.95em; }
+        .social-row { display:flex; gap:16px; justify-content:center; margin:2px auto 32px; position:relative; z-index:1; }
+        .social-icon { width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.32); display:flex; align-items:center; justify-content:center; transition:transform 0.2s ease, background 0.2s ease; }
+        .social-icon:hover { background:rgba(255,255,255,0.32); transform:translateY(-3px); }
+        .social-icon svg { width:22px; height:22px; fill:#fff; }
 
         /* ===== INTRO OVERLAY ===== */
         .intro-overlay {
@@ -516,6 +526,28 @@
             cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .start-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+
+        /* ===== SECTION DIVIDER (slides separadoras) ===== */
+        .section-divider {
+            min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 60px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--amber) 60%, #FFC979 100%);
+            color: var(--white); position: relative; overflow: hidden;
+        }
+        .section-divider::before {
+            content: ''; position: absolute; top: -20%; left: -10%; width: 480px; height: 480px;
+            background: rgba(255,255,255,0.08); border-radius: 50%;
+        }
+        .section-divider::after {
+            content: ''; position: absolute; bottom: -25%; right: -10%; width: 380px; height: 380px;
+            background: rgba(255,255,255,0.08); border-radius: 50%;
+        }
+        .section-divider .sd-icon { font-size: 4.5em; margin-bottom: 18px; position: relative; z-index: 1; animation: float 3s ease infinite; }
+        .section-divider .sd-eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 5px; font-size: 0.95em; opacity: 0.85; margin-bottom: 14px; position: relative; z-index: 1; text-transform: uppercase; }
+        .section-divider h1 { font-family: 'Montserrat', sans-serif; font-size: 3.4em; font-weight: 800; margin-bottom: 18px; position: relative; z-index: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.15); }
+        .section-divider p { font-size: 1.2em; opacity: 0.95; max-width: 680px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
+        .section-divider .sd-rule { width: 90px; height: 4px; background: rgba(255,255,255,0.7); border-radius: 2px; margin: 26px auto 0; position: relative; z-index: 1; }
+        @media (max-width: 768px) { .section-divider h1 { font-size: 2.1em; } }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fff3e6; }
@@ -638,12 +670,51 @@
         </div>
     </div>
 
-    <!-- ===================== SLIDE 4: ¿QUÉ ES? [VARIABLE] ===================== -->
+    <!-- ===================== DIVISORIA: ENTORNO DE SIMULACIÓN ===================== -->
     <div class="slide" id="slide4">
+        <div class="section-divider">
+            <div class="sd-icon">🖥️</div>
+            <div class="sd-eyebrow">Sección</div>
+            <h1>Entorno de Simulación</h1>
+            <p>Conoce la plataforma antes de empezar a competir</p>
+            <div class="sd-rule"></div>
+        </div>
+    </div>
+
+    <!-- ===================== SLIDE: MANUAL DEL SIMULADOR ===================== -->
+    <div class="slide" id="slide5">
+        <div class="slide-header">
+            <h1>📖 Manual del Simulador</h1>
+            <h2>Tu guía de referencia para cada decisión del periodo</h2>
+            <div class="slide-number">03</div>
+        </div>
+        <div class="slide-content">
+            <div class="plataforma-cols">
+                <div>
+                    <div class="cartelera-container" id="manual-container">
+                        <img class="cartelera-img" src="assets/manual-cover.png" alt="Portada del Manual de Corbatul" loading="lazy"
+                             onclick="openLightbox('assets/manual-cover.png','Manual de Corbatul')"
+                             onerror="this.closest('#manual-container').style.display='none'; var p=document.getElementById('manual-pending'); if(p) p.style.display='block';">
+                    </div>
+                    <div class="reserved" id="manual-pending" style="display:none;">
+                        <h3>📖 Foto del manual — pendiente de archivo</h3>
+                        <p>Guarda la portada o una captura del manual como <code>assets/manual-cover.png</code> en la carpeta del proyecto y aparecerá aquí automáticamente.</p>
+                    </div>
+                </div>
+                <div>
+                    <p style="color:#555;line-height:1.7;margin-bottom:24px;">El manual explica en detalle cada área de decisión, las fórmulas del simulador y cómo interpretar el Cuadro de Mando. Consúltalo siempre que tengas dudas antes de enviar tus decisiones.</p>
+                    <a href="assets/manual-corbatul.pdf" target="_blank" rel="noopener" class="phone-btn" style="display:block;text-decoration:none;padding:16px;font-size:0.95em;">📥 DESCARGAR EL MANUAL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SLIDE 4: ¿QUÉ ES? [VARIABLE] ===================== -->
+    <div class="slide" id="slide6">
         <div class="slide-header">
             <h1>¿Qué es Corbatul?</h1>
             <h2>Una empresa textil de ropa de vestir para hombre en un mercado maduro</h2>
-            <div class="slide-number">03</div>
+            <div class="slide-number">04</div>
         </div>
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">Corbatul es un simulador <strong>competitivo</strong> que aplica control de costes, presupuestación y financiación en una empresa textil masculina con margen reducido y presión de mercado. La fiabilidad de tus estimaciones y el control de costes definirán tu competitividad.</p>
@@ -690,11 +761,11 @@
     </div>
 
     <!-- ===================== SLIDE 5: CADENA DE VALOR [VARIABLE] ===================== -->
-    <div class="slide" id="slide5">
+    <div class="slide" id="slide7">
         <div class="slide-header">
             <h1>🔗 Cadena de Valor</h1>
             <h2>De la fabricación al mercado, con la financiación como eje transversal</h2>
-            <div class="slide-number">04</div>
+            <div class="slide-number">05</div>
         </div>
         <div class="slide-content">
             <div class="value-chain">
@@ -736,11 +807,11 @@
     </div>
 
     <!-- ===================== SLIDE 6: PRODUCCIÓN / INSUMOS [VARIABLE] ===================== -->
-    <div class="slide" id="slide6">
+    <div class="slide" id="slide8">
         <div class="slide-header">
             <h1>🧵 Producción e Insumos</h1>
             <h2>Proveedores, costes de confección e inventario</h2>
-            <div class="slide-number">05</div>
+            <div class="slide-number">06</div>
         </div>
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">La materia prima se compra a proveedores con tres niveles de calidad —<span class="badge badge-green">Económica</span> <span class="badge badge-amber">Estándar</span> <span class="badge badge-purple">Premium</span>— y el descuento depende del <strong>volumen de compra</strong>:</p>
@@ -780,11 +851,11 @@
     </div>
 
     <!-- ===================== SLIDE 7: ÁREAS DE DECISIÓN [VARIABLE] ===================== -->
-    <div class="slide" id="slide7">
+    <div class="slide" id="slide9">
         <div class="slide-header">
             <h1>⚙️ Áreas de Decisión</h1>
             <h2>Las decisiones que tomas cada periodo</h2>
-            <div class="slide-number">06</div>
+            <div class="slide-number">07</div>
         </div>
         <div class="slide-content">
             <div class="card-grid">
@@ -832,53 +903,54 @@
         </div>
     </div>
 
-    <!-- ===================== SLIDE 8: SEGMENTOS Y COMPETITIVIDAD [VARIABLE] ===================== -->
-    <div class="slide" id="slide8">
+    <!-- ===================== SLIDE: VALOR DE LA COMPAÑÍA [VARIABLE] ===================== -->
+    <div class="slide" id="slide10">
         <div class="slide-header">
-            <h1>🎯 Competitividad y Mercado</h1>
-            <h2>Cómo compites por la preferencia del cliente</h2>
-            <div class="slide-number">07</div>
+            <h1>🏆 Valor de la Compañía</h1>
+            <h2>Los factores ponderados que definen el ranking</h2>
+            <div class="slide-number">08</div>
         </div>
         <div class="slide-content">
-            <div class="two-col">
-                <div>
-                    <h3 style="font-family:'Montserrat';color:var(--primary-dark);margin-bottom:14px;">🛒 Del mercado a la venta</h3>
-                    <div class="seg-row" style="background:#fff3e6;"><span class="seg-emoji">🧲</span><div><strong>Intención de compra</strong><br><small>Demanda interesada en tu producto en el último periodo.</small></div></div>
-                    <div class="seg-row" style="background:#fff8f0;"><span class="seg-emoji">📦</span><div><strong>Disponibilidad de producto</strong><br><small>Solo vendes si hay stock: producción + inventario previo.</small></div></div>
-                    <div class="seg-row" style="background:#fff3e6;"><span class="seg-emoji">🛍️</span><div><strong>Cobertura del canal</strong><br><small>El descuento al canal define tu presencia en los puntos de venta.</small></div></div>
-                    <div class="seg-row" style="background:#fff8f0;"><span class="seg-emoji">📈</span><div><strong>Ventas</strong><br><small>La intención de compra se convierte en ventas, margen y resultados.</small></div></div>
+            <p style="color:#555;line-height:1.7;">Tu gestión se evalúa con el índice <strong>Valor de la Compañía</strong>, que refleja la solidez del negocio a corto, medio y largo plazo. En condiciones normales debería <strong>crecer un 7% cada periodo</strong>. Estos son los factores y su peso:</p>
+            <div class="factor-accordion">
+                <div class="factor-item active">
+                    <div class="factor-header factor-green" onclick="toggleFactor(this)"><span>💰 Resultados Económicos</span><span class="factor-tag">34%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Vinculado directamente a los resultados de la compañía: el valor de cada periodo y su evolución reciente.</p><div class="factor-consejo"><strong>Consejo:</strong> es el factor de mayor peso — protege el margen y la rentabilidad por encima del crecimiento a cualquier coste.</div></div></div>
                 </div>
-                <div>
-                    <h3 style="font-family:'Montserrat';color:var(--primary-dark);margin-bottom:14px;">⭐ Factores de competitividad</h3>
-                    <div class="factor-accordion">
-                        <div class="factor-item active">
-                            <div class="factor-header factor-orange" onclick="toggleFactor(this)"><span>🏷️ Precio</span><span class="factor-icon">▼</span></div>
-                            <div class="factor-body"><div class="factor-content">Tiene un <strong>elevado nivel de relevancia</strong> en la selección del cliente. Bajar precios impulsa ventas, pero comprime el margen.</div></div>
-                        </div>
-                        <div class="factor-item">
-                            <div class="factor-header factor-amber" onclick="toggleFactor(this)"><span>🎩 Marca</span><span class="factor-icon">▼</span></div>
-                            <div class="factor-body"><div class="factor-content">El <strong>valor de marca</strong> (escala 1 a 100) crece con el presupuesto de promoción y mejora la preferencia.</div></div>
-                        </div>
-                        <div class="factor-item">
-                            <div class="factor-header factor-green" onclick="toggleFactor(this)"><span>🧥 Producto</span><span class="factor-icon">▼</span></div>
-                            <div class="factor-body"><div class="factor-content">El <strong>valor de producto</strong> combina diseño, amplitud de gama y calidad de la materia prima.</div></div>
-                        </div>
-                        <div class="factor-item">
-                            <div class="factor-header factor-teal" onclick="toggleFactor(this)"><span>🤝 Gestión comercial</span><span class="factor-icon">▼</span></div>
-                            <div class="factor-body"><div class="factor-content">La <strong>cobertura de distribución</strong> y el incentivo al equipo de ventas determinan el acceso al cliente final.</div></div>
-                        </div>
-                    </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-orange" onclick="toggleFactor(this)"><span>📊 Presupuestación de Resultados</span><span class="factor-tag">18%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Qué tanto se aproxima tu presupuesto de la cuenta de resultados a los resultados reales.</p><div class="factor-consejo"><strong>Consejo:</strong> presupuesta con rigor cada periodo; entender cómo se generan los resultados es lo que mejora la previsión.</div></div></div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-amber" onclick="toggleFactor(this)"><span>🧾 Presupuestación del Balance</span><span class="factor-tag">15%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Aproximación de tu presupuesto del balance a los valores reales de la compañía.</p><div class="factor-consejo"><strong>Consejo:</strong> apóyate en una hoja de cálculo para modelizar activo, pasivo y patrimonio.</div></div></div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-blue" onclick="toggleFactor(this)"><span>🏦 Patrimonio y Solvencia</span><span class="factor-tag">10%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Valores alcanzados en los principales ratios de rentabilidad y solvencia.</p><div class="factor-consejo"><strong>Consejo:</strong> cuida el endeudamiento; un buen rating reduce tus costes financieros.</div></div></div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-teal" onclick="toggleFactor(this)"><span>🧥 Valor de Producto + Distribución</span><span class="factor-tag">9%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Combinación del valor de producto (diseño, gama, materia prima) y de la cobertura de distribución.</p><div class="factor-consejo"><strong>Consejo:</strong> equilibra mejora de producto con presencia en el canal.</div></div></div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-purple" onclick="toggleFactor(this)"><span>🎩 Valor de Marca</span><span class="factor-tag">9%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Valoración alcanzada por la marca entre los segmentos de demanda (escala 10 a 100).</p><div class="factor-consejo"><strong>Consejo:</strong> el valor de marca se construye con constancia en el presupuesto de promoción.</div></div></div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-header factor-red" onclick="toggleFactor(this)"><span>📈 Participación de Mercado</span><span class="factor-tag">5%</span></div>
+                    <div class="factor-body"><div class="factor-content"><p>Cuota alcanzada por la empresa en el mercado, en los diferentes productos.</p><div class="factor-consejo"><strong>Consejo:</strong> crece sin sacrificar margen; vender más sin rentabilidad no compensa.</div></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ===================== SLIDE: TUS COMPETIDORES [VARIABLE] ===================== -->
-    <div class="slide" id="slide-competidores">
+    <div class="slide" id="slide11">
         <div class="slide-header">
             <h1>🥊 Tus Competidores</h1>
             <h2>No estás solo: compites contra las demás empresas del mercado</h2>
-            <div class="slide-number">08</div>
+            <div class="slide-number">09</div>
         </div>
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">Corbatul reproduce el <strong>escenario competitivo</strong> de varias compañías del sector textil. Cada equipo dirige una empresa rival y todas luchan por la misma demanda en un mercado maduro.</p>
@@ -926,50 +998,19 @@
         </div>
     </div>
 
-    <!-- ===================== SLIDE: VALOR DE LA COMPAÑÍA [VARIABLE] ===================== -->
-    <div class="slide" id="slide-valor">
-        <div class="slide-header">
-            <h1>🏆 Valor de la Compañía</h1>
-            <h2>Los factores ponderados que definen el ranking</h2>
-            <div class="slide-number">09</div>
-        </div>
-        <div class="slide-content">
-            <p style="color:#555;line-height:1.7;">Tu gestión se evalúa con el índice <strong>Valor de la Compañía</strong>, que refleja la solidez del negocio a corto, medio y largo plazo. En condiciones normales debería <strong>crecer un 7% cada periodo</strong>. Estos son los factores y su peso:</p>
-            <div class="factor-accordion">
-                <div class="factor-item active">
-                    <div class="factor-header factor-green" onclick="toggleFactor(this)"><span>💰 Resultados Económicos</span><span class="factor-tag">34%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Vinculado directamente a los resultados de la compañía: el valor de cada periodo y su evolución reciente.</p><div class="factor-consejo"><strong>Consejo:</strong> es el factor de mayor peso — protege el margen y la rentabilidad por encima del crecimiento a cualquier coste.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-orange" onclick="toggleFactor(this)"><span>📊 Presupuestación de Resultados</span><span class="factor-tag">18%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Qué tanto se aproxima tu presupuesto de la cuenta de resultados a los resultados reales.</p><div class="factor-consejo"><strong>Consejo:</strong> presupuesta con rigor cada periodo; entender cómo se generan los resultados es lo que mejora la previsión.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-amber" onclick="toggleFactor(this)"><span>🧾 Presupuestación del Balance</span><span class="factor-tag">15%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Aproximación de tu presupuesto del balance a los valores reales de la compañía.</p><div class="factor-consejo"><strong>Consejo:</strong> apóyate en una hoja de cálculo para modelizar activo, pasivo y patrimonio.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-blue" onclick="toggleFactor(this)"><span>🏦 Patrimonio y Solvencia</span><span class="factor-tag">10%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Valores alcanzados en los principales ratios de rentabilidad y solvencia.</p><div class="factor-consejo"><strong>Consejo:</strong> cuida el endeudamiento; un buen rating reduce tus costes financieros.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-teal" onclick="toggleFactor(this)"><span>🧥 Valor de Producto + Distribución</span><span class="factor-tag">9%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Combinación del valor de producto (diseño, gama, materia prima) y de la cobertura de distribución.</p><div class="factor-consejo"><strong>Consejo:</strong> equilibra mejora de producto con presencia en el canal.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-purple" onclick="toggleFactor(this)"><span>🎩 Valor de Marca</span><span class="factor-tag">9%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Valoración alcanzada por la marca entre los segmentos de demanda (escala 10 a 100).</p><div class="factor-consejo"><strong>Consejo:</strong> el valor de marca se construye con constancia en el presupuesto de promoción.</div></div></div>
-                </div>
-                <div class="factor-item">
-                    <div class="factor-header factor-red" onclick="toggleFactor(this)"><span>📈 Participación de Mercado</span><span class="factor-tag">5%</span></div>
-                    <div class="factor-body"><div class="factor-content"><p>Cuota alcanzada por la empresa en el mercado, en los diferentes productos.</p><div class="factor-consejo"><strong>Consejo:</strong> crece sin sacrificar margen; vender más sin rentabilidad no compensa.</div></div></div>
-                </div>
-            </div>
+    <!-- ===================== DIVISORIA: CUADRO DE MANDO ===================== -->
+    <div class="slide" id="slide12">
+        <div class="section-divider">
+            <div class="sd-icon">📊</div>
+            <div class="sd-eyebrow">Sección</div>
+            <h1>Cuadro de Mando</h1>
+            <p>Así verás los resultados de tu empresa en el simulador</p>
+            <div class="sd-rule"></div>
         </div>
     </div>
 
     <!-- ===================== SLIDE 9: CUADRO DE MANDO (GALERÍA) [VARIABLE] ===================== -->
-    <div class="slide" id="slide9">
+    <div class="slide" id="slide13">
         <div class="slide-header">
             <h1>📊 Cuadro de Mando</h1>
             <h2>Parte 1 · Diagnóstico general y costes de operación</h2>
@@ -977,7 +1018,7 @@
         </div>
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">El Cuadro de Mando reúne todos los <strong>informes de gestión</strong> de tu empresa, con dos vistas en cada uno: la <strong>evolución</strong> frente al periodo anterior y la <strong>comparativa</strong> frente a tus competidores. En esta <strong>primera parte</strong> verás los informes de <strong>diagnóstico general</strong> y de <strong>costes de operación</strong> (haz clic en la imagen para ampliarla):</p>
-            <div class="cm-masonry">
+            <div class="cm-grid">
                 <div class="cm-card">
                     <div class="cm-img"><img src="assets/cm-valor.jpg" alt="Valor de la Compañía" loading="lazy" onclick="openLightbox('assets/cm-valor.jpg','Valor de la Compañía — ranking y comparativa entre empresas')"></div>
                     <div class="cm-body">
@@ -1028,7 +1069,7 @@
     </div>
 
     <!-- ===================== SLIDE 9b: CUADRO DE MANDO · PARTE 2 [VARIABLE] ===================== -->
-    <div class="slide" id="slide9b">
+    <div class="slide" id="slide14">
         <div class="slide-header">
             <h1>📊 Cuadro de Mando</h1>
             <h2>Parte 2 · Demanda, ventas y estados financieros</h2>
@@ -1036,7 +1077,7 @@
         </div>
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">Continuamos con los informes de <strong>demanda y mercado</strong> y los <strong>estados financieros</strong> —la cuenta de resultados y el balance—, que son el núcleo de un simulador económico-financiero. Recuerda que cada informe trae la <strong>evolución</strong> frente al periodo anterior y la <strong>comparativa</strong> con tus competidores (haz clic en la imagen para ampliarla):</p>
-            <div class="cm-masonry">
+            <div class="cm-grid">
                 <div class="cm-card">
                     <div class="cm-img"><img src="assets/cm-mercado.jpg" alt="Mercado" loading="lazy" onclick="openLightbox('assets/cm-mercado.jpg','Mercado — unidades e ingresos por producto del total de compañías')"></div>
                     <div class="cm-body">
@@ -1086,8 +1127,19 @@
         </div>
     </div>
 
+    <!-- ===================== DIVISORIA: DECISIONES DEL SIMULADOR ===================== -->
+    <div class="slide" id="slide15">
+        <div class="section-divider">
+            <div class="sd-icon">🕹️</div>
+            <div class="sd-eyebrow">Sección</div>
+            <h1>Decisiones del Simulador</h1>
+            <p>Las pantallas donde introduces tus decisiones cada periodo</p>
+            <div class="sd-rule"></div>
+        </div>
+    </div>
+
     <!-- ===================== SLIDE 10: DECISIONES DEL SIMULADOR (GALERÍA) [VARIABLE] ===================== -->
-    <div class="slide" id="slide10">
+    <div class="slide" id="slide16">
         <div class="slide-header">
             <h1>🕹️ Las Decisiones del Simulador</h1>
             <h2>Dónde introduces tus decisiones cada periodo</h2>
@@ -1096,56 +1148,63 @@
         <div class="slide-content">
             <p style="color:#555;line-height:1.7;">El menú <strong>Decisiones</strong> se organiza en bloques. En cada uno mueves controles dentro de un <strong>rango permitido</strong>. Estas son las pantallas reales del simulador — <strong>haz clic en cualquiera para ampliarla</strong>:</p>
 
-            <div class="cm-masonry">
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-ventas.jpg" alt="Decisiones de Ventas" loading="lazy" onclick="openLightbox('assets/dec-ventas.jpg','Ventas — precio por producto, descuento por canal, promoción de marca e incentivos al equipo de ventas')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🏷️ Ventas</h3><span class="cm-badge">1</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Precio por línea, descuento al canal, promoción de marca e incentivos al equipo de ventas.</div>
-                    </div>
+            <div class="dec-grid">
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">1</span>
+                    <div><h3>🏷️ Ventas</h3><p>Precio por línea, descuento al canal, promoción de marca e incentivos al equipo de ventas.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-producto.jpg" alt="Decisiones de Producto" loading="lazy" onclick="openLightbox('assets/dec-producto.jpg','Producto — gasto en diseño, amplitud de gama y selección de proveedor')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🧥 Producto</h3><span class="cm-badge">2</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Gasto en diseño, amplitud de gama y proveedor de materia prima por línea.</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-ventas.jpg" alt="Decisiones de Ventas" loading="lazy" onclick="openLightbox('assets/dec-ventas.jpg','Ventas — precio por producto, descuento por canal, promoción de marca e incentivos al equipo de ventas')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">El <strong>precio</strong> es el factor que más pesa en la elección del cliente, pero marca, producto y gestión comercial también cuentan. El <strong>descuento al canal</strong> define tu <strong>Cobertura</strong>: sin presencia en los puntos de venta, la demanda no te encuentra. <strong>Cuidado:</strong> cada punto de descuento, promoción o incentivo resta margen; compara lo que vendes de más con lo que te cuesta.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">2</span>
+                    <div><h3>🧥 Producto</h3><p>Gasto en diseño, amplitud de gama y proveedor de materia prima por línea.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-produccion.jpg" alt="Decisiones de Producción" loading="lazy" onclick="openLightbox('assets/dec-produccion.jpg','Producción — nivel de ampliación de capacidad, unidades a producir y gasto de mantenimiento')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🏭 Producción</h3><span class="cm-badge">3</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Ampliación de capacidad, unidades a producir y gasto de mantenimiento.</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-producto.jpg" alt="Decisiones de Producto" loading="lazy" onclick="openLightbox('assets/dec-producto.jpg','Producto — gasto en diseño, amplitud de gama y selección de proveedor')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">El <strong>diseño</strong> (escala 1–10) sube <strong>máximo un nivel por periodo</strong> y solo si le asignas presupuesto: planifícalo con tiempo. Más diseño y más <strong>amplitud de gama</strong> hacen tu oferta más atractiva, pero encarecen la confección (el diseño, hasta un 16%). El <strong>proveedor</strong> (económico, estándar o premium) debe ser coherente con tu precio, y comprar más volumen te da descuentos del 7% o 15%.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">3</span>
+                    <div><h3>🏭 Producción</h3><p>Ampliación de capacidad, unidades a producir y gasto de mantenimiento.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-financiacion.jpg" alt="Decisiones de Financiación" loading="lazy" onclick="openLightbox('assets/dec-financiacion.jpg','Financiación — préstamos a largo y corto plazo, plazos de cobro/pago y cancelación anticipada')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🏦 Financiación</h3><span class="cm-badge">4</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Préstamos, plazos de cobro/pago y cancelación anticipada de deuda.</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-produccion.jpg" alt="Decisiones de Producción" loading="lazy" onclick="openLightbox('assets/dec-produccion.jpg','Producción — nivel de ampliación de capacidad, unidades a producir y gasto de mantenimiento')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">Solo vendes lo que tienes (producción + inventario), pero <strong>la moda caduca</strong>: lo que no vendas antes del segundo trimestre del periodo siguiente se pierde. Ajusta las unidades a la demanda real y vigila el ratio <strong>inventario sobre ventas</strong>. A mayor ocupación de la fábrica, menor coste unitario. Amplía capacidad solo si la demanda lo justifica, y financia esa ampliación con recursos propios o con préstamo a largo plazo. El mantenimiento mejora la eficiencia, pero cada peso extra rinde menos.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">4</span>
+                    <div><h3>🏦 Financiación</h3><p>Préstamos, plazos de cobro/pago y cancelación anticipada de deuda.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-inversiones.jpg" alt="Inversiones financieras" loading="lazy" onclick="openLightbox('assets/dec-inversiones.jpg','Inversiones financieras — compra de deuda pública a corto plazo (por trimestre) y a largo plazo')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>💹 Inversiones financieras</h3><span class="cm-badge">5</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Compra de deuda pública a corto (trimestral) y largo plazo.</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-financiacion.jpg" alt="Decisiones de Financiación" loading="lazy" onclick="openLightbox('assets/dec-financiacion.jpg','Financiación — préstamos a largo y corto plazo, plazos de cobro/pago y cancelación anticipada')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">Si te falta caja se activa el <strong>Crédito Extraordinario</strong>, que cuesta <strong>un 50% más</strong>: anticípate y pide el préstamo que necesites. Usa el largo plazo para inversiones y el corto plazo para necesidades puntuales. Más deuda empeora tu <strong>Rating</strong> y encarece los créditos. Alargar el plazo de cobro a clientes te hace más competitivo, pero inmoviliza caja. Alargar mucho el pago a proveedores puede subir el coste y bajar la calidad de la materia prima.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">5</span>
+                    <div><h3>💹 Inversiones financieras</h3><p>Compra de deuda pública a corto (trimestral) y largo plazo.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-proyectos.jpg" alt="Otros proyectos" loading="lazy" onclick="openLightbox('assets/dec-proyectos.jpg','Otros proyectos — p. ej. reparación estructural del edificio de la fábrica (decisión única, no modificable)')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🏗️ Otros proyectos</h3><span class="cm-badge">6</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Decisiones especiales puntuales (p. ej. reparación del edificio). Son de una sola oportunidad.</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-inversiones.jpg" alt="Inversiones financieras" loading="lazy" onclick="openLightbox('assets/dec-inversiones.jpg','Inversiones financieras — compra de deuda pública a corto plazo (por trimestre) y a largo plazo')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">Inviertes solo si tus previsiones muestran <strong>excedente de caja</strong>. El <strong>corto plazo</strong> (trimestral) rinde el tipo de interés del escenario −10%; el <strong>largo plazo</strong> (2 años) rinde +25%, pero el dinero queda inmovilizado. <strong>Cuidado:</strong> invertir sin caja suficiente te lleva al Crédito Extraordinario, que cuesta mucho más de lo que rinde la inversión.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">6</span>
+                    <div><h3>🏗️ Otros proyectos</h3><p>Decisiones especiales puntuales (p. ej. reparación del edificio). Son de una sola oportunidad.</p></div>
                 </div>
-                <div class="cm-card">
-                    <div class="cm-img"><img src="assets/dec-capital.jpg" alt="Ampliación de capital" loading="lazy" onclick="openLightbox('assets/dec-capital.jpg','Recursos propios — oferta de ampliación de capital (American Business VC, 20%)')"></div>
-                    <div class="cm-body">
-                        <div class="cm-titlerow"><h3>🤝 Recursos propios</h3><span class="cm-badge">7</span></div>
-                        <div class="cm-desc" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">Oferta de un inversor para ampliar capital y entrar en la compañía (20%).</div>
-                    </div>
+                <div class="dec-shot"><img src="assets/dec-proyectos.jpg" alt="Otros proyectos" loading="lazy" onclick="openLightbox('assets/dec-proyectos.jpg','Otros proyectos — p. ej. reparación estructural del edificio de la fábrica (decisión única, no modificable)')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">Son <strong>oportunidades puntuales</strong> que aparecen en algunos periodos: inversiones, mejoras operativas o compra-venta de activos. Son de <strong>una sola oportunidad</strong> y no se pueden modificar, así que antes de decidir analiza el coste, el riesgo de no hacerlo, el impacto en tu caja y en el balance, y cómo encaja con tu estrategia.</div></div>
+            </div>
+            <div class="dec-block">
+                <div class="dec-head">
+                    <span class="dec-num">7</span>
+                    <div><h3>🤝 Recursos propios</h3><p>Oferta de un inversor para ampliar capital y entrar en la compañía (20%).</p></div>
                 </div>
+                <div class="dec-shot"><img src="assets/dec-capital.jpg" alt="Ampliación de capital" loading="lazy" onclick="openLightbox('assets/dec-capital.jpg','Recursos propios — oferta de ampliación de capital (American Business VC, 20%)')"></div>
+                <div class="dec-body"><span class="cm-why-label">Análisis</span><div class="cm-why-text">Ampliar capital aporta <strong>caja sin endeudarte</strong>: mejora tu solvencia y tu Rating, pero cedes un <strong>20% de la propiedad</strong>. Evalúa si el precio refleja el valor real de la empresa, incluidos los terrenos y las participaciones, y si tienes un uso rentable para ese dinero (por ejemplo, ampliar capacidad sin depender de los bancos).</div></div>
+            </div>
             </div>
 
             <div class="reserved" style="border-style:solid;border-color:var(--primary);background:#fdeaec;margin-top:10px;text-align:left;">
@@ -1156,7 +1215,7 @@
     </div>
 
     <!-- ===================== SLIDE: LA PRESUPUESTACIÓN [VARIABLE] ===================== -->
-    <div class="slide" id="slide-presupuestacion">
+    <div class="slide" id="slide17">
         <div class="slide-header">
             <h1>📈 La Presupuestación</h1>
             <h2>El último paso de cada periodo — y el que más pesa en tu nota</h2>
@@ -1224,7 +1283,7 @@
     </div>
 
     <!-- ===================== SLIDE: MÉTODOS DE IMPLEMENTACIÓN ===================== -->
-    <div class="slide" id="slide12">
+    <div class="slide" id="slide18">
         <div class="slide-header">
             <h1>📚 Métodos de Implementación</h1>
             <h2>Cuatro formas de integrar el simulador en tu programa académico</h2>
@@ -1398,7 +1457,7 @@
     </div>
 
     <!-- ===================== SLIDE 13: FAQ ===================== -->
-    <div class="slide" id="slide13">
+    <div class="slide" id="slide19">
         <div class="slide-header">
             <h1>❓ Preguntas Frecuentes</h1>
             <h2>Las dudas más comunes antes de iniciar la simulación</h2>
@@ -1439,13 +1498,24 @@
     </div>
 
     <!-- ===================== SLIDE 14: CIERRE ===================== -->
-    <div class="slide" id="slide14">
+    <div class="slide" id="slide20">
         <div class="closing">
             <h1>¡Gracias!</h1>
             <p class="thanks-sub">Gracias por participar en Corbatul</p>
             <div class="contact-box">
                 <div class="contact-line">📧 <a href="mailto:fidelizacion@simuladoresdenegocios.co">fidelizacion@simuladoresdenegocios.co</a></div>
                 <div class="contact-line"><svg class="wa-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> <a href="https://wa.me/573017903086">301 790 3086</a></div>
+            </div>
+            <div class="social-row">
+                <a class="social-icon" href="https://co.linkedin.com/company/simuladores-de-negocios-colombia-sas" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-338.7C24.09 109.3 0 85.18 0 55.7A53.79 53.79 0 0 1 53.79 1.9c29.7 0 53.8 24.09 53.8 53.8 0 29.48-24.1 53.6-53.75 53.6zM447.9 448h-92.68V302.4c0-34.7-.7-79.4-48.4-79.4-48.4 0-55.8 37.8-55.8 76.9V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+                </a>
+                <a class="social-icon" href="https://www.youtube.com/@SimuladoresdeNegocios/videos" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.1 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232 335.1V177l143.7 79.1L232 335.1z"/></svg>
+                </a>
+                <a class="social-icon" href="https://simuladordenegocios.co/" target="_blank" rel="noopener" aria-label="Página web">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </a>
             </div>
             <div class="sdn-img-box" id="sdn-box">
                 <img class="sdn-img" src="assets/logo-sdn.png" alt="Simuladores de Negocios Colombia"
@@ -1475,7 +1545,7 @@
 <!-- ===================== NAV BAR ===================== -->
 <div class="nav-bar">
     <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>◀ Anterior</button>
-    <div class="slide-counter" id="slideCounter">1 / 17</div>
+    <div class="slide-counter" id="slideCounter">1 / 20</div>
     <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente ▶</button>
 </div>
 
